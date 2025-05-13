@@ -1,10 +1,15 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <n-message-provider>
+    <div id="app">
+      <AccountForm />
+    </div>
+  </n-message-provider>
 </template>
+
+<script setup lang="ts">
+import AccountForm from "./components/AccountForm.vue";
+import { NMessageProvider } from "naive-ui";
+</script>
 
 <style>
 #app {
