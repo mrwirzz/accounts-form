@@ -18,6 +18,7 @@
   "devDependencies": {
     "@types/chai": "^4.2.15",
     "@types/mocha": "^8.2.1",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
@@ -34,7 +35,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "prettier": "^2.4.1",
-    "typescript": "~4.5.5"
+    "typescript": "~5.8.3"
   },
   "eslintConfig": {
     "root": true,
@@ -68,5 +69,10 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/tests/unit/setup.js"
+    ]
+  }
 }

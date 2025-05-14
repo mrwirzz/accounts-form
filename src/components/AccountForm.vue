@@ -1,25 +1,41 @@
 <template>
-  <div class="p-4">
-    <n-h2>Учетные записи</n-h2>
-    <n-button type="primary" @click="addAccount" class="mb-4">+</n-button>
+  <n-space vertical size="large" class="p-4">
+    <n-space justify="space-between" align="center">
+      <n-h2>Учетные записи</n-h2>
+      <n-button type="primary" @click="addAccount" strong>
+        + Добавить
+      </n-button>
+    </n-space>
 
-    <AccountCard
-      v-for="account in accounts"
-      :key="account.id"
-      :account="account"
-      :has-tried-submit="hasTriedSubmit"
-      :account-type-options="accountTypeOptions"
-      @update="validateAccount"
-      @remove="removeAccount"
-    />
-  </div>
+    <n-alert v-if="accounts.length === 0" type="info" show-icon>
+      Пока нет ни одной учетной записи. Нажмите «Добавить», чтобы создать.
+    </n-alert>
+
+    <n-space vertical size="large">
+      <n-card
+        v-for="account in accounts"
+        :key="account.id"
+        :bordered="true"
+        size="medium"
+        hoverable
+      >
+        <AccountCard
+          :account="account"
+          :has-tried-submit="hasTriedSubmit"
+          :account-type-options="accountTypeOptions"
+          @update="validateAccount"
+          @remove="removeAccount"
+        />
+      </n-card>
+    </n-space>
+  </n-space>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useAccountStore } from "@/stores/accountStore";
 import { v4 as uuidv4 } from "uuid";
-import { NButton, NH2 } from "naive-ui";
+import { NButton, NH2, NSpace, NCard, NAlert } from "naive-ui";
 import type { Account } from "@/types/Account";
 import AccountCard from "@/components/AccountCard.vue";
 

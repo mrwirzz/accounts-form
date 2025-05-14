@@ -14,8 +14,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, ref, watch, PropType } from "vue";
 import { NInput } from "naive-ui";
+import type { FormValidationStatus } from "naive-ui";
 
 export default defineComponent({
   name: "LabelInput",
@@ -26,7 +27,7 @@ export default defineComponent({
       required: true,
     },
     status: {
-      type: String,
+      type: String as PropType<FormValidationStatus | undefined>,
       default: undefined,
     },
   },
